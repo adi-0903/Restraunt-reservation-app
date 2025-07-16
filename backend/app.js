@@ -6,9 +6,15 @@ import reservationRouter from "./routes/reservationRoute.js";
 import { dbConnection } from "./database/dbConnection.js";
 const app = express();
 dotenv.config({ path: "./config/config.env" });
+
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://restraunt-reservation-app.onrender.com",
+];
+
 app.use(
   cors({
-    origin: ["https://restraunt-reservation-app.onrender.com"],
+    origin: allowedOrigins,
     methods: ["POST"],
     credentials: true,
   })
